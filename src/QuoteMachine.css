@@ -41,3 +41,13 @@
 .new-btn:active {
   background-color: #319795;
 }
+
+.Loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #4fd1c5;
+  color: #fff;
+}

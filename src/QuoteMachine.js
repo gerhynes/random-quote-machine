@@ -24,7 +24,6 @@ export default class QuoteMachine extends Component {
       let res = await axios.get(
         "https://programming-quotes-api.herokuapp.com/quotes/random"
       );
-      console.log(res.data);
       let quoteText = res.data.en;
       let quoteAuthor = res.data.author;
       this.setState({
@@ -41,14 +40,16 @@ export default class QuoteMachine extends Component {
   }
   tweetQuote() {
     const { quoteText, quoteAuthor } = this.state;
-    const tweetURL = `${this.props.baseURL}${quoteText} - ${quoteAuthor}`;
+    const tweetURL = `${this.props.baseURL}${encodeURIComponent(
+      `"${quoteText}"`
+    )} - ${quoteAuthor}`;
     window.open(tweetURL);
   }
   render() {
     const { quoteText, quoteAuthor } = this.state;
     if (this.state.loading) {
       return (
-        <div>
+        <div className="Loader">
           <h1>Loading....</h1>
         </div>
       );
@@ -68,7 +69,7 @@ export default class QuoteMachine extends Component {
               <button
                 className="new-btn"
                 id="new-quote"
-                onClick={this.handleClick}
+                onClick={this.getNewQuote}
               >
                 New Quote
               </button>
