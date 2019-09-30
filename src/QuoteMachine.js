@@ -17,6 +17,8 @@ export default class QuoteMachine extends Component {
     this.tweetQuote = this.tweetQuote.bind(this);
   }
   componentDidMount() {
+    // Prevent empty quote from rendering
+    this.setState({ loading: true });
     this.getQuote();
   }
   async getQuote() {
