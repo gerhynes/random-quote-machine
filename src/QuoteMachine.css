@@ -1,4 +1,13 @@
-.QuoteBox {
+.QuoteMachine {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  background-color: #4fd1c5;
+}
+
+.Quote-tile {
   max-width: 750px;
   background-color: #fff;
   border-radius: 5px;
@@ -6,26 +15,15 @@
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.QuoteBox__text {
-  margin: 2rem;
-  font-size: 1.5rem;
-}
-
-.QuoteBox__author {
-  text-align: right;
-  margin: 1rem 2rem;
-  font-size: 1.25rem;
-}
-
-.QuoteBox__btns {
+.Quote-btns {
   display: flex;
   justify-content: space-around;
   align-items: center;
   margin-bottom: 0.5rem;
 }
 
-.QuoteBox__tweet-btn,
-.QuoteBox__new-btn {
+.tweet-btn,
+.new-btn {
   margin: 1rem;
   padding: 1rem;
   border: none;
@@ -37,9 +35,9 @@
   transition: background-color 300ms ease-in;
 }
 
-.QuoteBox__tweet-btn:hover,
-.QuoteBox__new-btn:hover,
-.QuoteBox__tweet-btn:active,
-.QuoteBox__new-btn:active {
+.tweet-btn:hover,
+.new-btn:hover,
+.tweet-btn:active,
+.new-btn:active {
   background-color: #319795;
 }
