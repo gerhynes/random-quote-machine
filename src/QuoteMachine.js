@@ -4,13 +4,17 @@ import axios from "axios";
 import "./QuoteMachine.css";
 
 export default class QuoteMachine extends Component {
+  static defaultProps = {
+    baseURL: "https://twitter.com/intent/tweet?hashtags=DevQuotes&text="
+  };
   constructor(props) {
     super(props);
     this.state = {
       loading: false,
       quote: { quotetext: "", quoteAuthor: "" }
     };
-    this.handleClick = this.handleClick.bind(this);
+    this.getNewQuote = this.getNewQuote.bind(this);
+    this.tweetQuote = this.tweetQuote.bind(this);
   }
   componentDidMount() {
     this.getQuote();
@@ -32,8 +36,13 @@ export default class QuoteMachine extends Component {
       alert(e);
     }
   }
-  handleClick() {
+  getNewQuote() {
     this.setState({ loading: true }, this.getQuote);
+  }
+  tweetQuote() {
+    const { quoteText, quoteAuthor } = this.state;
+    const tweetURL = `${this.props.baseURL}${quoteText} - ${quoteAuthor}`;
+    window.open(tweetURL);
   }
   render() {
     const { quoteText, quoteAuthor } = this.state;
@@ -49,7 +58,11 @@ export default class QuoteMachine extends Component {
           <div className="Quote-tile">
             <Quote quoteText={quoteText} quoteAuthor={quoteAuthor} />
             <div className="Quote-btns">
-              <button className="tweet-btn" id="tweet-quote">
+              <button
+                className="tweet-btn"
+                id="tweet-quote"
+                onClick={this.tweetQuote}
+              >
                 Tweet Quote
               </button>
               <button
