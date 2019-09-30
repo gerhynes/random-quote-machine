@@ -10,6 +10,7 @@ export default class QuoteMachine extends Component {
       loading: false,
       quote: { quotetext: "", quoteAuthor: "" }
     };
+    this.handleClick = this.handleClick.bind(this);
   }
   componentDidMount() {
     this.getQuote();
@@ -30,6 +31,9 @@ export default class QuoteMachine extends Component {
       alert(e);
     }
   }
+  handleClick() {
+    this.setState({ loading: true }, this.getQuote);
+  }
   render() {
     const { quoteText, quoteAuthor } = this.state;
     return (
@@ -40,7 +44,11 @@ export default class QuoteMachine extends Component {
             <button className="tweet-btn" id="tweet-quote">
               Tweet Quote
             </button>
-            <button className="new-btn" id="new-quote">
+            <button
+              className="new-btn"
+              id="new-quote"
+              onClick={this.handleClick}
+            >
               New Quote
             </button>
           </div>
