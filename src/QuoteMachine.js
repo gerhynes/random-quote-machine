@@ -1,8 +1,35 @@
 import React, { Component } from "react";
 import Quote from "./Quote";
+import axios from "axios";
 import "./QuoteMachine.css";
 
 export default class QuoteMachine extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: false,
+      quote: { quotetext: "", quoteAuthor: "" }
+    };
+  }
+  componentDidMount() {
+    this.getQuote();
+  }
+  async getQuote() {
+    try {
+      let res = await axios.get(
+        "https://programming-quotes-api.herokuapp.com/quotes/random"
+      );
+      console.log(res.data);
+      let quoteText = res.data.en;
+      let quoteAuthor = res.data.author;
+      this.setState({
+        quoteText,
+        quoteAuthor
+      });
+    } catch (e) {
+      alert(e);
+    }
+  }
   render() {
     return (
       <div className="QuoteMachine">
