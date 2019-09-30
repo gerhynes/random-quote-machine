@@ -24,6 +24,7 @@ export default class QuoteMachine extends Component {
       let quoteText = res.data.en;
       let quoteAuthor = res.data.author;
       this.setState({
+        loading: false,
         quoteText,
         quoteAuthor
       });
@@ -36,24 +37,32 @@ export default class QuoteMachine extends Component {
   }
   render() {
     const { quoteText, quoteAuthor } = this.state;
-    return (
-      <div className="QuoteMachine">
-        <div className="Quote-tile">
-          <Quote quoteText={quoteText} quoteAuthor={quoteAuthor} />
-          <div className="Quote-btns">
-            <button className="tweet-btn" id="tweet-quote">
-              Tweet Quote
-            </button>
-            <button
-              className="new-btn"
-              id="new-quote"
-              onClick={this.handleClick}
-            >
-              New Quote
-            </button>
+    if (this.state.loading) {
+      return (
+        <div>
+          <h1>Loading....</h1>
+        </div>
+      );
+    } else {
+      return (
+        <div className="QuoteMachine">
+          <div className="Quote-tile">
+            <Quote quoteText={quoteText} quoteAuthor={quoteAuthor} />
+            <div className="Quote-btns">
+              <button className="tweet-btn" id="tweet-quote">
+                Tweet Quote
+              </button>
+              <button
+                className="new-btn"
+                id="new-quote"
+                onClick={this.handleClick}
+              >
+                New Quote
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 }
