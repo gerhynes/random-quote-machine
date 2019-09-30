@@ -31,10 +31,11 @@ export default class QuoteMachine extends Component {
     }
   }
   render() {
+    const { quoteText, quoteAuthor } = this.state;
     return (
       <div className="QuoteMachine">
         <div className="Quote-tile">
-          <Quote />
+          <Quote quoteText={quoteText} quoteAuthor={quoteAuthor} />
           <div className="Quote-btns">
             <button className="tweet-btn" id="tweet-quote">
               Tweet Quote
