@@ -58,16 +58,16 @@ export default class QuoteMachine extends Component {
     } else {
       return (
         <div className="QuoteMachine">
-          <div className="Quote-tile">
+          <div className="Quote-tile" id="quote-box">
             <Quote quoteText={quoteText} quoteAuthor={quoteAuthor} />
             <div className="Quote-btns">
-              <button
+              <a
                 className="tweet-btn"
                 id="tweet-quote"
                 onClick={this.tweetQuote}
               >
                 Tweet Quote
-              </button>
+              </a>
               <button
                 className="new-btn"
                 id="new-quote"
