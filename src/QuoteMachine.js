@@ -62,9 +62,12 @@ export default class QuoteMachine extends Component {
             <Quote quoteText={quoteText} quoteAuthor={quoteAuthor} />
             <div className="Quote-btns">
               <a
+                href={`https://twitter.com/intent/tweet?hashtags=DevQuotes&related=freecodecamp&text=${encodeURIComponent(
+                  `"${quoteText}"`
+                )} - ${quoteAuthor}`}
                 className="tweet-btn"
                 id="tweet-quote"
-                onClick={this.tweetQuote}
+                // onClick={this.tweetQuote}
               >
                 Tweet Quote
               </a>
