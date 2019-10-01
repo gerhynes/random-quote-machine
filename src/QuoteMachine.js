@@ -4,9 +4,6 @@ import axios from "axios";
 import "./QuoteMachine.css";
 
 export default class QuoteMachine extends Component {
-  static defaultProps = {
-    baseURL: "https://twitter.com/intent/tweet?hashtags=DevQuotes&text="
-  };
   constructor(props) {
     super(props);
     this.state = {
@@ -14,7 +11,6 @@ export default class QuoteMachine extends Component {
       quote: { quotetext: "", quoteAuthor: "" }
     };
     this.getNewQuote = this.getNewQuote.bind(this);
-    this.tweetQuote = this.tweetQuote.bind(this);
   }
   componentDidMount() {
     // Prevent empty quote from rendering
@@ -28,24 +24,19 @@ export default class QuoteMachine extends Component {
       );
       let quoteText = res.data.en;
       let quoteAuthor = res.data.author;
-      this.setState({
-        loading: false,
-        quoteText,
-        quoteAuthor
-      });
+      setTimeout(() => {
+        this.setState({
+          loading: false,
+          quoteText,
+          quoteAuthor
+        });
+      }, 700);
     } catch (e) {
       alert(e);
     }
   }
   getNewQuote() {
     this.setState({ loading: true }, this.getQuote);
-  }
-  tweetQuote() {
-    const { quoteText, quoteAuthor } = this.state;
-    const tweetURL = `${this.props.baseURL}${encodeURIComponent(
-      `"${quoteText}"`
-    )} - ${quoteAuthor}`;
-    window.open(tweetURL);
   }
   render() {
     const { quoteText, quoteAuthor } = this.state;
@@ -67,7 +58,6 @@ export default class QuoteMachine extends Component {
                 )} - ${quoteAuthor}`}
                 className="tweet-btn"
                 id="tweet-quote"
-                // onClick={this.tweetQuote}
               >
                 Tweet Quote
               </a>
