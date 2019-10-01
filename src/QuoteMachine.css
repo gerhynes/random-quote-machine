@@ -4,12 +4,13 @@
   align-items: center;
   height: 100vh;
   width: 100%;
-  background-color: #4fd1c5;
+  background-color: #e2e8f0;
 }
 
 .Quote-tile {
   max-width: 750px;
-  background-color: #fff;
+  background-color: #011627;
+  color: #fff;
   border-radius: 5px;
   margin: 1rem;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
@@ -27,9 +28,10 @@
   margin: 1rem;
   padding: 1rem;
   border: none;
-  background-color: #4fd1c5;
+  background-color: #011627;
   color: #fff;
   border-radius: 5px;
+  border: 1px solid #fff;
   cursor: pointer;
   font-size: 1rem;
   text-decoration: none;
@@ -37,10 +39,13 @@
 }
 
 .tweet-btn:hover,
+.tweet-btn:active {
+  background-color: #60fdff;
+}
+
 .new-btn:hover,
-.tweet-btn:active,
 .new-btn:active {
-  background-color: #319795;
+  background-color: #6972ff;
 }
 
 .Loader {
