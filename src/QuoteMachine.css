@@ -40,24 +40,24 @@
 }
 
 .tweet-btn {
-  color: #60fdff;
-  border-color: #60fdff;
+  color: #c792ea;
+  border-color: #c792ea;
 }
 
 .tweet-btn:hover,
 .tweet-btn:active {
-  background-color: #60fdff;
+  background-color: #c792ea;
   color: #011627;
 }
 
 .new-btn {
-  color: #6972ff;
-  border-color: #6972ff;
+  color: #82aaff;
+  border-color: #82aaff;
 }
 
 .new-btn:hover,
 .new-btn:active {
-  background-color: #6972ff;
+  background-color: #82aaff;
   color: #011627;
 }
 
